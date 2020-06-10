@@ -1,1 +1,1 @@
-xcodegen generate && open HelpfulNeighbour.xcworkspace
+rm -rf Map Distance.* && xcodegen generate && open "Map Distance.xcodeproj"
