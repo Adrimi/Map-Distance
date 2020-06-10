@@ -1,0 +1,1 @@
+xcodegen generate && open HelpfulNeighbour.xcworkspace
