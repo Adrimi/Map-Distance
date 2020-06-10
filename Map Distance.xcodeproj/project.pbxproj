@@ -15,6 +15,7 @@
 		9524EF4F24910C2C00D87391 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9524EF4D24910C2C00D87391 /* LaunchScreen.storyboard */; };
 		9524EF5A24910C2C00D87391 /* Map_DistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524EF5924910C2C00D87391 /* Map_DistanceTests.swift */; };
 		9524EF6524910C2C00D87391 /* Map_DistanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524EF6424910C2C00D87391 /* Map_DistanceUITests.swift */; };
+		9558462F24912960008A62DE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9558462E24912960008A62DE /* MapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		9524EF6024910C2C00D87391 /* Map DistanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Map DistanceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9524EF6424910C2C00D87391 /* Map_DistanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map_DistanceUITests.swift; sourceTree = "<group>"; };
 		9524EF6624910C2C00D87391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9558462E24912960008A62DE /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,9 +101,9 @@
 		9524EF4124910C2A00D87391 /* Map Distance */ = {
 			isa = PBXGroup;
 			children = (
+				9558462D2491294E008A62DE /* Views */,
 				9524EF4224910C2A00D87391 /* AppDelegate.swift */,
 				9524EF4424910C2A00D87391 /* SceneDelegate.swift */,
-				9524EF4624910C2A00D87391 /* ContentView.swift */,
 				9524EF4824910C2C00D87391 /* Assets.xcassets */,
 				9524EF4D24910C2C00D87391 /* LaunchScreen.storyboard */,
 				9524EF5024910C2C00D87391 /* Info.plist */,
@@ -134,6 +136,15 @@
 				9524EF6624910C2C00D87391 /* Info.plist */,
 			);
 			path = "Map DistanceUITests";
+			sourceTree = "<group>";
+		};
+		9558462D2491294E008A62DE /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9524EF4624910C2A00D87391 /* ContentView.swift */,
+				9558462E24912960008A62DE /* MapView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -268,6 +279,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9524EF4324910C2A00D87391 /* AppDelegate.swift in Sources */,
+				9558462F24912960008A62DE /* MapView.swift in Sources */,
 				9524EF4524910C2A00D87391 /* SceneDelegate.swift in Sources */,
 				9524EF4724910C2A00D87391 /* ContentView.swift in Sources */,
 			);
