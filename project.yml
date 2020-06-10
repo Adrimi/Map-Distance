@@ -1,0 +1,35 @@
+name: Map Distance
+options:
+  bundleIdPrefix: io.adrimi
+
+packages:
+  ViewInspector:
+    url: https://github.com/nalexn/ViewInspector.git
+    from: 0.3.12
+
+targets:
+  Map Distance:
+    type: application
+    platform: iOS
+    deploymentTarget: "13.2"
+    sources: Map Distance
+    settings:
+      base:
+        SWIFT_VERSION: "5"
+      configs:
+        Debug:
+          DEBUG_MODE: YES
+        Release:
+          DEBUG_MODE: NO
+    scheme:
+      testTargets:
+        - Map DistanceTests
+
+  Map DistanceTests:
+    type: bundle.unit-test
+    platform: iOS
+    deploymentTarget: "13.2"
+    sources: Map DistanceTests
+    dependencies:
+      - target: Map Distance
+      - package: ViewInspector
