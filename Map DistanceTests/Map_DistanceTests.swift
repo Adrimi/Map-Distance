@@ -7,7 +7,11 @@
 //
 
 import XCTest
+import ViewInspector
 @testable import Map_Distance
+
+extension ContentView: Inspectable {}
+
 
 class Map_DistanceTests: XCTestCase {
 
@@ -19,16 +23,25 @@ class Map_DistanceTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    // Text field test
+    func test_textFields_shouldNotHavePlaceholder() throws {
+        let sut = ContentView()
+        let value1 = try sut.inspect()
+            .vStack()
+            .hStack(0)
+            .textField(0)
+            .text()
+            .string()
+        
+        let value2 = try sut.inspect()
+            .vStack()
+            .hStack(0)
+            .textField(1)
+            .text()
+            .string()
+        
+        XCTAssertEqual([value1, value2], ["", ""])
     }
 
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
-        }
-    }
 
 }
