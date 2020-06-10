@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -16,6 +16,7 @@
 		9524EF5A24910C2C00D87391 /* Map_DistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524EF5924910C2C00D87391 /* Map_DistanceTests.swift */; };
 		9524EF6524910C2C00D87391 /* Map_DistanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524EF6424910C2C00D87391 /* Map_DistanceUITests.swift */; };
 		9558462F24912960008A62DE /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9558462E24912960008A62DE /* MapView.swift */; };
+		958E0CCE24912DD500EF28EA /* ViewInspector in Frameworks */ = {isa = PBXBuildFile; productRef = 958E0CCD24912DD500EF28EA /* ViewInspector */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -65,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				958E0CCE24912DD500EF28EA /* ViewInspector in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -163,6 +165,8 @@
 			dependencies = (
 			);
 			name = "Map Distance";
+			packageProductDependencies = (
+			);
 			productName = "Map Distance";
 			productReference = 9524EF3F24910C2A00D87391 /* Map Distance.app */;
 			productType = "com.apple.product-type.application";
@@ -181,6 +185,9 @@
 				9524EF5724910C2C00D87391 /* PBXTargetDependency */,
 			);
 			name = "Map DistanceTests";
+			packageProductDependencies = (
+				958E0CCD24912DD500EF28EA /* ViewInspector */,
+			);
 			productName = "Map DistanceTests";
 			productReference = 9524EF5524910C2C00D87391 /* Map DistanceTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
@@ -235,6 +242,9 @@
 				Base,
 			);
 			mainGroup = 9524EF3624910C2A00D87391;
+			packageReferences = (
+				958E0CCC24912DD500EF28EA /* XCRemoteSwiftPackageReference "ViewInspector" */,
+			);
 			productRefGroup = 9524EF4024910C2A00D87391 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -446,11 +456,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_LOADER = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Map Distance/Preview Content\"";
 				DEVELOPMENT_TEAM = UHULAJL778;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Map Distance/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -466,11 +478,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				BUNDLE_LOADER = "";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"Map Distance/Preview Content\"";
 				DEVELOPMENT_TEAM = UHULAJL778;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = "Map Distance/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -606,6 +620,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		958E0CCC24912DD500EF28EA /* XCRemoteSwiftPackageReference "ViewInspector" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/nalexn/ViewInspector.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.3.12;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		958E0CCD24912DD500EF28EA /* ViewInspector */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 958E0CCC24912DD500EF28EA /* XCRemoteSwiftPackageReference "ViewInspector" */;
+			productName = ViewInspector;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9524EF3724910C2A00D87391 /* Project object */;
 }
