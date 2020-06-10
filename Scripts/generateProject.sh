@@ -1,0 +1,1 @@
+rm -rf Map Distance.* && xcodegen generate && open "Map Distance.xcodeproj"
