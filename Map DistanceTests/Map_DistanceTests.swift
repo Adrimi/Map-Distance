@@ -10,22 +10,27 @@ import XCTest
 import ViewInspector
 @testable import Map_Distance
 
-extension ContentView: Inspectable {}
+extension Inspection: InspectionEmissary where V: Inspectable {}
 
+extension ContentView: Inspectable {}
+extension BasicTextfield: Inspectable {}
 
 class Map_DistanceTests: XCTestCase {
 
+    private var sut: ContentView!
+    
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
+        sut = ContentView()
     }
 
     override func tearDownWithError() throws {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
+        sut = nil
     }
 
     // Text field test
     func test_textFields_shouldNotHavePlaceholder() throws {
-        let sut = ContentView()
         let value1 = try sut.inspect()
             .vStack()
             .hStack(0)
@@ -41,6 +46,19 @@ class Map_DistanceTests: XCTestCase {
             .string()
         
         XCTAssertEqual([value1, value2], ["", ""])
+    }
+    
+    func test_textFields_hasProperLabels() throws {
+        let label1 = try sut.inspect()
+            .vStack()
+            .hStack(0)
+            .view(BasicTextfield<BasicTextfieldLabel>.self, 0)
+            .vStack()
+            .textField(0)
+            .text()
+            .string()
+        
+        XCTAssertEqual(label1, "FROM")
     }
 
 
