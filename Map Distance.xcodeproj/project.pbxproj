@@ -1,0 +1,599 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 50;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		9524EF4324910C2A00D87391 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524EF4224910C2A00D87391 /* AppDelegate.swift */; };
+		9524EF4524910C2A00D87391 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524EF4424910C2A00D87391 /* SceneDelegate.swift */; };
+		9524EF4724910C2A00D87391 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524EF4624910C2A00D87391 /* ContentView.swift */; };
+		9524EF4924910C2C00D87391 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9524EF4824910C2C00D87391 /* Assets.xcassets */; };
+		9524EF4C24910C2C00D87391 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9524EF4B24910C2C00D87391 /* Preview Assets.xcassets */; };
+		9524EF4F24910C2C00D87391 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9524EF4D24910C2C00D87391 /* LaunchScreen.storyboard */; };
+		9524EF5A24910C2C00D87391 /* Map_DistanceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524EF5924910C2C00D87391 /* Map_DistanceTests.swift */; };
+		9524EF6524910C2C00D87391 /* Map_DistanceUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9524EF6424910C2C00D87391 /* Map_DistanceUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		9524EF5624910C2C00D87391 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9524EF3724910C2A00D87391 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9524EF3E24910C2A00D87391;
+			remoteInfo = "Map Distance";
+		};
+		9524EF6124910C2C00D87391 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9524EF3724910C2A00D87391 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9524EF3E24910C2A00D87391;
+			remoteInfo = "Map Distance";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		9524EF3F24910C2A00D87391 /* Map Distance.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Map Distance.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9524EF4224910C2A00D87391 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9524EF4424910C2A00D87391 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		9524EF4624910C2A00D87391 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9524EF4824910C2C00D87391 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9524EF4B24910C2C00D87391 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		9524EF4E24910C2C00D87391 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9524EF5024910C2C00D87391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9524EF5524910C2C00D87391 /* Map DistanceTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Map DistanceTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9524EF5924910C2C00D87391 /* Map_DistanceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map_DistanceTests.swift; sourceTree = "<group>"; };
+		9524EF5B24910C2C00D87391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9524EF6024910C2C00D87391 /* Map DistanceUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Map DistanceUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9524EF6424910C2C00D87391 /* Map_DistanceUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Map_DistanceUITests.swift; sourceTree = "<group>"; };
+		9524EF6624910C2C00D87391 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		9524EF3C24910C2A00D87391 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9524EF5224910C2C00D87391 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9524EF5D24910C2C00D87391 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		9524EF3624910C2A00D87391 = {
+			isa = PBXGroup;
+			children = (
+				9524EF4124910C2A00D87391 /* Map Distance */,
+				9524EF5824910C2C00D87391 /* Map DistanceTests */,
+				9524EF6324910C2C00D87391 /* Map DistanceUITests */,
+				9524EF4024910C2A00D87391 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		9524EF4024910C2A00D87391 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				9524EF3F24910C2A00D87391 /* Map Distance.app */,
+				9524EF5524910C2C00D87391 /* Map DistanceTests.xctest */,
+				9524EF6024910C2C00D87391 /* Map DistanceUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		9524EF4124910C2A00D87391 /* Map Distance */ = {
+			isa = PBXGroup;
+			children = (
+				9524EF4224910C2A00D87391 /* AppDelegate.swift */,
+				9524EF4424910C2A00D87391 /* SceneDelegate.swift */,
+				9524EF4624910C2A00D87391 /* ContentView.swift */,
+				9524EF4824910C2C00D87391 /* Assets.xcassets */,
+				9524EF4D24910C2C00D87391 /* LaunchScreen.storyboard */,
+				9524EF5024910C2C00D87391 /* Info.plist */,
+				9524EF4A24910C2C00D87391 /* Preview Content */,
+			);
+			path = "Map Distance";
+			sourceTree = "<group>";
+		};
+		9524EF4A24910C2C00D87391 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				9524EF4B24910C2C00D87391 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		9524EF5824910C2C00D87391 /* Map DistanceTests */ = {
+			isa = PBXGroup;
+			children = (
+				9524EF5924910C2C00D87391 /* Map_DistanceTests.swift */,
+				9524EF5B24910C2C00D87391 /* Info.plist */,
+			);
+			path = "Map DistanceTests";
+			sourceTree = "<group>";
+		};
+		9524EF6324910C2C00D87391 /* Map DistanceUITests */ = {
+			isa = PBXGroup;
+			children = (
+				9524EF6424910C2C00D87391 /* Map_DistanceUITests.swift */,
+				9524EF6624910C2C00D87391 /* Info.plist */,
+			);
+			path = "Map DistanceUITests";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		9524EF3E24910C2A00D87391 /* Map Distance */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9524EF6924910C2C00D87391 /* Build configuration list for PBXNativeTarget "Map Distance" */;
+			buildPhases = (
+				9524EF3B24910C2A00D87391 /* Sources */,
+				9524EF3C24910C2A00D87391 /* Frameworks */,
+				9524EF3D24910C2A00D87391 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "Map Distance";
+			productName = "Map Distance";
+			productReference = 9524EF3F24910C2A00D87391 /* Map Distance.app */;
+			productType = "com.apple.product-type.application";
+		};
+		9524EF5424910C2C00D87391 /* Map DistanceTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9524EF6C24910C2C00D87391 /* Build configuration list for PBXNativeTarget "Map DistanceTests" */;
+			buildPhases = (
+				9524EF5124910C2C00D87391 /* Sources */,
+				9524EF5224910C2C00D87391 /* Frameworks */,
+				9524EF5324910C2C00D87391 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9524EF5724910C2C00D87391 /* PBXTargetDependency */,
+			);
+			name = "Map DistanceTests";
+			productName = "Map DistanceTests";
+			productReference = 9524EF5524910C2C00D87391 /* Map DistanceTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		9524EF5F24910C2C00D87391 /* Map DistanceUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 9524EF6F24910C2C00D87391 /* Build configuration list for PBXNativeTarget "Map DistanceUITests" */;
+			buildPhases = (
+				9524EF5C24910C2C00D87391 /* Sources */,
+				9524EF5D24910C2C00D87391 /* Frameworks */,
+				9524EF5E24910C2C00D87391 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				9524EF6224910C2C00D87391 /* PBXTargetDependency */,
+			);
+			name = "Map DistanceUITests";
+			productName = "Map DistanceUITests";
+			productReference = 9524EF6024910C2C00D87391 /* Map DistanceUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		9524EF3724910C2A00D87391 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 1150;
+				LastUpgradeCheck = 1150;
+				ORGANIZATIONNAME = adrian.szymanowski;
+				TargetAttributes = {
+					9524EF3E24910C2A00D87391 = {
+						CreatedOnToolsVersion = 11.5;
+					};
+					9524EF5424910C2C00D87391 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 9524EF3E24910C2A00D87391;
+					};
+					9524EF5F24910C2C00D87391 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 9524EF3E24910C2A00D87391;
+					};
+				};
+			};
+			buildConfigurationList = 9524EF3A24910C2A00D87391 /* Build configuration list for PBXProject "Map Distance" */;
+			compatibilityVersion = "Xcode 9.3";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 9524EF3624910C2A00D87391;
+			productRefGroup = 9524EF4024910C2A00D87391 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				9524EF3E24910C2A00D87391 /* Map Distance */,
+				9524EF5424910C2C00D87391 /* Map DistanceTests */,
+				9524EF5F24910C2C00D87391 /* Map DistanceUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		9524EF3D24910C2A00D87391 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9524EF4F24910C2C00D87391 /* LaunchScreen.storyboard in Resources */,
+				9524EF4C24910C2C00D87391 /* Preview Assets.xcassets in Resources */,
+				9524EF4924910C2C00D87391 /* Assets.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9524EF5324910C2C00D87391 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9524EF5E24910C2C00D87391 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		9524EF3B24910C2A00D87391 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9524EF4324910C2A00D87391 /* AppDelegate.swift in Sources */,
+				9524EF4524910C2A00D87391 /* SceneDelegate.swift in Sources */,
+				9524EF4724910C2A00D87391 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9524EF5124910C2C00D87391 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9524EF5A24910C2C00D87391 /* Map_DistanceTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9524EF5C24910C2C00D87391 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9524EF6524910C2C00D87391 /* Map_DistanceUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		9524EF5724910C2C00D87391 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9524EF3E24910C2A00D87391 /* Map Distance */;
+			targetProxy = 9524EF5624910C2C00D87391 /* PBXContainerItemProxy */;
+		};
+		9524EF6224910C2C00D87391 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9524EF3E24910C2A00D87391 /* Map Distance */;
+			targetProxy = 9524EF6124910C2C00D87391 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		9524EF4D24910C2C00D87391 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				9524EF4E24910C2C00D87391 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		9524EF6724910C2C00D87391 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		9524EF6824910C2C00D87391 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		9524EF6A24910C2C00D87391 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Map Distance/Preview Content\"";
+				DEVELOPMENT_TEAM = UHULAJL778;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Map Distance/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.adrimi.Map-Distance";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		9524EF6B24910C2C00D87391 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_ASSET_PATHS = "\"Map Distance/Preview Content\"";
+				DEVELOPMENT_TEAM = UHULAJL778;
+				ENABLE_PREVIEWS = YES;
+				INFOPLIST_FILE = "Map Distance/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.adrimi.Map-Distance";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		9524EF6D24910C2C00D87391 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UHULAJL778;
+				INFOPLIST_FILE = "Map DistanceTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.adrimi.Map-DistanceTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Map Distance.app/Map Distance";
+			};
+			name = Debug;
+		};
+		9524EF6E24910C2C00D87391 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UHULAJL778;
+				INFOPLIST_FILE = "Map DistanceTests/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.adrimi.Map-DistanceTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Map Distance.app/Map Distance";
+			};
+			name = Release;
+		};
+		9524EF7024910C2C00D87391 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UHULAJL778;
+				INFOPLIST_FILE = "Map DistanceUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.adrimi.Map-DistanceUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Map Distance";
+			};
+			name = Debug;
+		};
+		9524EF7124910C2C00D87391 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = UHULAJL778;
+				INFOPLIST_FILE = "Map DistanceUITests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = "io.adrimi.Map-DistanceUITests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "Map Distance";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		9524EF3A24910C2A00D87391 /* Build configuration list for PBXProject "Map Distance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9524EF6724910C2C00D87391 /* Debug */,
+				9524EF6824910C2C00D87391 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9524EF6924910C2C00D87391 /* Build configuration list for PBXNativeTarget "Map Distance" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9524EF6A24910C2C00D87391 /* Debug */,
+				9524EF6B24910C2C00D87391 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9524EF6C24910C2C00D87391 /* Build configuration list for PBXNativeTarget "Map DistanceTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9524EF6D24910C2C00D87391 /* Debug */,
+				9524EF6E24910C2C00D87391 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		9524EF6F24910C2C00D87391 /* Build configuration list for PBXNativeTarget "Map DistanceUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				9524EF7024910C2C00D87391 /* Debug */,
+				9524EF7124910C2C00D87391 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 9524EF3724910C2A00D87391 /* Project object */;
+}
