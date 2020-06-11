@@ -14,11 +14,18 @@ extension Inspection: InspectionEmissary where V: Inspectable {}
 
 extension ContentView: Inspectable {}
 extension BasicTextfield: Inspectable {}
+extension BasicTextfieldLabel: Inspectable {}
 
 class Map_DistanceTests: XCTestCase {
 
+    
+    // MARK: - Parameters
+    private typealias TextField = BasicTextfield<BasicTextfieldLabel>
+    private typealias InspecedTextField = InspectableView<ViewType.View<Map_DistanceTests.TextField>>
     private var sut: ContentView!
     
+    
+    // MARK: - Setup
     override func setUpWithError() throws {
         // Put setup code here. This method is called before the invocation of each test method in the class.
         sut = ContentView()
@@ -29,37 +36,49 @@ class Map_DistanceTests: XCTestCase {
         sut = nil
     }
 
-    // Text field test
+    // MARK: - Tests Methods
+    func test_contentView_shouldHaveTwoTextFields() throws {
+        let textfields = try getTextfields()
+        
+        XCTAssertEqual(textfields.count, 2)
+    }
+    
     func test_textFields_shouldNotHavePlaceholder() throws {
-        let value1 = try sut.inspect()
-            .vStack()
-            .hStack(0)
-            .textField(0)
-            .text()
-            .string()
+        let textfields = try getTextfields()
+        let texts = try textfields.compactMap {
+            try $0.vStack()
+                .textField(1)
+                .text()
+                .string()
+        }
         
-        let value2 = try sut.inspect()
-            .vStack()
-            .hStack(0)
-            .textField(1)
-            .text()
-            .string()
-        
-        XCTAssertEqual([value1, value2], ["", ""])
+        XCTAssertEqual(texts, ["", ""])
     }
     
     func test_textFields_hasProperLabels() throws {
-        let label1 = try sut.inspect()
-            .vStack()
-            .hStack(0)
-            .view(BasicTextfield<BasicTextfieldLabel>.self, 0)
-            .vStack()
-            .textField(0)
-            .text()
-            .string()
+        let labelsFactory = ["FROM", "TO"]
         
-        XCTAssertEqual(label1, "FROM")
+        let textfields = try getTextfields()
+        let labels = try textfields.compactMap {
+            try $0.vStack()
+                .view(BasicTextfieldLabel.self, 0)
+                .text()
+                .string()
+        }
+        XCTAssertEqual(labels, labelsFactory)
     }
-
+    
+    
+    // MARK: - Helper Methods
+    private func getTextfields() throws -> [InspecedTextField] {
+        let container = try sut.inspect()
+            .view(ContentView.self)
+            .vStack()
+            .hStack(1)
+        
+        return try [0, 1].compactMap {
+            try container.view(TextField.self, $0)
+        }
+    }
 
 }
