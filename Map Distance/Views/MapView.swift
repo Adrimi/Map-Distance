@@ -15,6 +15,7 @@ struct MapView: UIViewRepresentable {
     // MARK: - Paramters
     @Binding var fromCoordinate: MKPointAnnotation?
     @Binding var toCoordinate: MKPointAnnotation?
+    @Binding var toggleUpdate: Bool
     
     private var coordsAsAnnotations: [MKPointAnnotation] {
         get {
@@ -37,6 +38,12 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ view: MKMapView, context: Context) {
+        if toggleUpdate {
+            view.removeAnnotations(view.annotations)
+            view.showAnnotations(view.annotations, animated: true)
+            toggleUpdate = false
+        }
+        
         let annotations = coordsAsAnnotations
         if annotations.map(\.coordinate) != view.annotations.map(\.coordinate) {
             view.removeAnnotations(view.annotations)

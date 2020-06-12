@@ -17,12 +17,15 @@ struct ContentView: View {
         VStack(spacing: 32) {
             
             ZStack(alignment: .bottom) {
-                MapView(fromCoordinate: $viewModel.fromCoordinate, toCoordinate: $viewModel.toCoordinate)
+                MapView(fromCoordinate: $viewModel.fromAnnotation, toCoordinate: $viewModel.toAnnotation, toggleUpdate: $viewModel.mapUpdate)
                     .cornerRadius(20)
                     .background(NeumorphBackgroundView())
-                
-                distanceInfoView
-                    .padding(.all, 8)
+
+                if viewModel.isShowingDistanceInfo {
+                    DistanceInfoView(distance: viewModel.distance)
+                        .padding(.all, 8)
+                        .transition(.scale)
+                }
             }
             .layoutPriority(1)
             
@@ -30,9 +33,12 @@ struct ContentView: View {
                 BasicTextField(label: BasicTextfieldLabel("FROM"), placeholder: viewModel.textFieldsPlaceholder, text: $viewModel.from)
                 BasicTextField(label: BasicTextfieldLabel("TO"), placeholder: viewModel.textFieldsPlaceholder, text: $viewModel.to)
             }
-            
+
             Button(action: {
                 self.viewModel.serachForLocations()
+                withAnimation {
+                    self.viewModel.checkDistance()
+                }
             }) {
                 Text("Search")
             }
@@ -40,16 +46,9 @@ struct ContentView: View {
         .padding(.all, 24)
         .background(Color.offWhite.edgesIgnoringSafeArea(.all))
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
+        .modifier(KeyboardObserving(updateUI: viewModel.updateMap))
     }
-    
-    private var distanceInfoView: some View {
-        if let distance = viewModel.distance {
-            let infoView = DistanceInfoView(distance: distance)
-            return AnyView(infoView)
-        } else {
-            return AnyView(EmptyView())
-        }
-    }
+
 }
 
 #if DEBUG

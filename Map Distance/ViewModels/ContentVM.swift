@@ -12,45 +12,40 @@ class ContentVM: ObservableObject {
     
     let textFieldsPlaceholder = "Coord/Name"
     
-    @Published var from: String = ""
-    @Published var to: String = ""
+    @Published var from: String = "51 21"
+    @Published var to: String = "52 21"
     
-    @Published var fromCoordinate: MKPointAnnotation?
-    @Published var toCoordinate: MKPointAnnotation?
+    @Published var fromAnnotation: MKPointAnnotation?
+    @Published var toAnnotation: MKPointAnnotation?
     
-    @Published var distance: Double?
+    var distance: Double = 0
+    @Published var isShowingDistanceInfo: Bool = false
+    
+    @Published var mapUpdate: Bool = false
     
     func serachForLocations() {
-        var coords = [CLLocationCoordinate2D]()
-        
         if let coord1 = parseStringToCoords(string: from) {
-            fromCoordinate = {
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = coord1
-                return annotation
-            }()
-            coords.append(coord1)
+            setAnnotation(&fromAnnotation, with: coord1)
         } else {
-            fromCoordinate = .none
+            fromAnnotation = .none
         }
         
         if let coord2 = parseStringToCoords(string: to) {
-            toCoordinate = {
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = coord2
-                return annotation
-            }()
-            coords.append(coord2)
+            setAnnotation(&toAnnotation, with: coord2)
         } else {
-            toCoordinate = .none
+            toAnnotation = .none
         }
-        
-        if coords.count == 2 {
-            let points = coords.map { MKMapPoint($0) }
-            let distance = points[0].distance(to: points[1])
+    }
+    
+    func checkDistance() {
+        if let coord1 = fromAnnotation?.coordinate,
+            let coord2 = toAnnotation?.coordinate {
+            let distance = MKMapPoint(coord1).distance(to: MKMapPoint(coord2))
             self.distance = distance
+            isShowingDistanceInfo = true
+        } else {
+            isShowingDistanceInfo = false
         }
-        
     }
     
     func parseStringToCoords(string: String) -> CLLocationCoordinate2D? {
@@ -59,6 +54,16 @@ class ContentVM: ObservableObject {
             return .init(latitude: lat, longitude: lon)
         }
         return .none
+    }
+    
+    func updateMap() {
+        mapUpdate = true
+    }
+    
+    // MARK: - Helper Methods
+    private func setAnnotation(_ annotation: inout MKPointAnnotation?, with coordinate: CLLocationCoordinate2D) {
+        annotation = MKPointAnnotation()
+        annotation?.coordinate = coordinate
     }
     
 }
