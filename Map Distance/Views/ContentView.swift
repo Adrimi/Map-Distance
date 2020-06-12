@@ -40,8 +40,12 @@ struct ContentView: View, Tappable {
                     self.viewModel.checkDistance()
                 }
             }) {
-                Text("Search")
+                Text("SEARCH")
+                    .font(.system(size: 16))
+                    .foregroundColor(.black)
+                    .padding()
             }
+            .buttonStyle(NeumorphicButtonStyle())
         }
         .padding(.all, 24)
         .gesture(tap)
