@@ -16,12 +16,15 @@ struct ContentView: View {
     var body: some View {
         VStack(spacing: 32) {
             
-            // TODO: change to MapView
-            MapView(fromCoordinate: $viewModel.fromCoordinate, toCoordinate: $viewModel.toCoordinate)
-                .cornerRadius(20)
-                .background(NeumorphBackgroundView())
-                .layoutPriority(1)
-            
+            ZStack(alignment: .bottom) {
+                MapView(fromCoordinate: $viewModel.fromCoordinate, toCoordinate: $viewModel.toCoordinate)
+                    .cornerRadius(20)
+                    .background(NeumorphBackgroundView())
+                
+                distanceInfoView
+                    .padding(.all, 8)
+            }
+            .layoutPriority(1)
             
             HStack(spacing: 32) {
                 BasicTextField(label: BasicTextfieldLabel("FROM"), placeholder: viewModel.textFieldsPlaceholder, text: $viewModel.from)
@@ -37,6 +40,15 @@ struct ContentView: View {
         .padding(.all, 24)
         .background(Color.offWhite.edgesIgnoringSafeArea(.all))
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
+    }
+    
+    private var distanceInfoView: some View {
+        if let distance = viewModel.distance {
+            let infoView = DistanceInfoView(distance: distance)
+            return AnyView(infoView)
+        } else {
+            return AnyView(EmptyView())
+        }
     }
 }
 

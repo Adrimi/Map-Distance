@@ -74,10 +74,10 @@ class Map_DistanceTests: XCTestCase {
     
     // MARK: - ViewModel tests
     func test_viewModel_shouldParseCoordsFromTextField() throws {
-        let coordsFactory = "51.5 21.0"
+        let coordStub = "51.5 21.0"
         let viewModel = ContentVM()
         
-        let coords = viewModel.parseStringToCoords(string: coordsFactory)
+        let coords = viewModel.parseStringToCoords(string: coordStub)
         
         XCTAssertEqual(coords!.latitude, 51.5)
         XCTAssertEqual(coords!.longitude, 21.0)

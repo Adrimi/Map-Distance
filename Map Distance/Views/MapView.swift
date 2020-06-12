@@ -13,16 +13,16 @@ struct MapView: UIViewRepresentable {
     
     
     // MARK: - Paramters
-    var fromCoordinate: Binding<MKPointAnnotation?>
-    var toCoordinate: Binding<MKPointAnnotation?>
+    @Binding var fromCoordinate: MKPointAnnotation?
+    @Binding var toCoordinate: MKPointAnnotation?
     
     private var coordsAsAnnotations: [MKPointAnnotation] {
         get {
             var annotations = [MKPointAnnotation]()
-            if let coord1 = fromCoordinate.wrappedValue {
+            if let coord1 = fromCoordinate {
                 annotations.append(coord1)
             }
-            if let coord2 = toCoordinate.wrappedValue {
+            if let coord2 = toCoordinate {
                 annotations.append(coord2)
             }
             return annotations
@@ -38,12 +38,8 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ view: MKMapView, context: Context) {
         let annotations = coordsAsAnnotations
-        if annotations.count != view.annotations.count {
+        if annotations.map(\.coordinate) != view.annotations.map(\.coordinate) {
             view.removeAnnotations(view.annotations)
-            view.addAnnotations(annotations)
-        }
-        
-        if !annotations.isEmpty {
             view.showAnnotations(annotations, animated: true)
         }
     }
@@ -61,4 +57,11 @@ struct MapView: UIViewRepresentable {
         
     }
 }
+
+extension CLLocationCoordinate2D: Equatable {
+    public static func ==(lhs: CLLocationCoordinate2D, rhs: CLLocationCoordinate2D) -> Bool {
+        return lhs.latitude == rhs.latitude && lhs.longitude == rhs.longitude
+    }
+}
+
 
