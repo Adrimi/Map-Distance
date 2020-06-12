@@ -12,8 +12,8 @@ class ContentVM: ObservableObject {
     
     let textFieldsPlaceholder = "Coord/Name"
     
-    @Published var from: String = "51.5 21.0"
-    @Published var to: String = "52.31 13.24"
+    @Published var from: String = ""
+    @Published var to: String = ""
     
     @Published var fromCoordinate: MKPointAnnotation?
     @Published var toCoordinate: MKPointAnnotation?

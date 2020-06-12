@@ -10,7 +10,7 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @ObservedObject private var viewModel = ContentVM()
+    @ObservedObject var viewModel = ContentVM()
     internal let inspection = Inspection<Self>()
     
     var body: some View {
