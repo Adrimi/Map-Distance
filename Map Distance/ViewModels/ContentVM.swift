@@ -84,6 +84,7 @@ class ContentVM: ObservableObject {
         guard let url = urlComponents.url else { return }
         
         URLSession.shared.dataTaskPublisher(for: url)
+            .receive(on: RunLoop.main)
             .sink(receiveCompletion: { completion in
                 switch completion {
                 case .finished:
@@ -107,7 +108,7 @@ class ContentVM: ObservableObject {
     
     
     // MARK: - Helper Methods
-    private func setAnnotation(_ annotation: MKPointAnnotation?, with coordinate: CLLocationCoordinate2D) {
+    func setAnnotation(_ annotation: MKPointAnnotation?, with coordinate: CLLocationCoordinate2D) {
         annotation?.coordinate = coordinate
     }
     
