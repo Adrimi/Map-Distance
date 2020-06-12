@@ -1,5 +1,5 @@
 //
-//  BasicTextfield.swift
+//  BasicTextField.swift
 //  Map Distance
 //
 //  Created by adrian.szymanowski on 10/06/2020.
@@ -8,13 +8,15 @@
 
 import SwiftUI
 
-struct BasicTextfield<Label: View>: View {
+struct BasicTextField<Label: View>: View {
     
     let label: Label
+    let placeholder: String
     @Binding var text: String
     
-    init(label: Label, text: Binding<String>) {
+    init(label: Label, placeholder: String, text: Binding<String>) {
         self.label = label
+        self.placeholder = placeholder
         self._text = text
     }
     
@@ -22,9 +24,9 @@ struct BasicTextfield<Label: View>: View {
         VStack(spacing: 16) {
             label
             
-            TextField("", text: $text)
+            TextField(placeholder, text: $text)
                 .frame(height: 50)
-                .background(NeumorphBackgroundView())
+                .modifier(NeumorphicTextFieldStyle())
         }
     }
 }
@@ -32,7 +34,8 @@ struct BasicTextfield<Label: View>: View {
 #if DEBUG
 struct BasicTextfield_Previews: PreviewProvider {
     static var previews: some View {
-        BasicTextfield(label: BasicTextfieldLabel("FROM"),
+        BasicTextField(label: BasicTextfieldLabel("FROM"),
+                       placeholder: "Coordinates or Name",
                        text: .mock(""))
             .previewLayout(.sizeThatFits)
     }
