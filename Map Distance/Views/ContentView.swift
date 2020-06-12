@@ -10,22 +10,28 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var from: String = ""
-    @State private var to: String = ""
+    @ObservedObject var viewModel = ContentVM()
     internal let inspection = Inspection<Self>()
     
     var body: some View {
         VStack(spacing: 32) {
             
             // TODO: change to MapView
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.offWhite)
+            MapView(fromCoordinate: $viewModel.fromCoordinate, toCoordinate: $viewModel.toCoordinate)
+                .cornerRadius(20)
                 .background(NeumorphBackgroundView())
+                .layoutPriority(1)
             
             
             HStack(spacing: 32) {
-                BasicTextfield(label: BasicTextfieldLabel("FROM"), text: $from)
-                BasicTextfield(label: BasicTextfieldLabel("TO"), text: $to)
+                BasicTextField(label: BasicTextfieldLabel("FROM"), placeholder: viewModel.textFieldsPlaceholder, text: $viewModel.from)
+                BasicTextField(label: BasicTextfieldLabel("TO"), placeholder: viewModel.textFieldsPlaceholder, text: $viewModel.to)
+            }
+            
+            Button(action: {
+                self.viewModel.serachForLocations()
+            }) {
+                Text("Search")
             }
         }
         .padding(.all, 24)
