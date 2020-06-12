@@ -73,7 +73,15 @@ class ContentVM: ObservableObject {
     
     // MARK: - Networking
     func fetch(location: String, handler: @escaping (Location) -> Void) {
-        let url = URL(string: "https://nominatim.openstreetmap.org/search?q=\(location)&format=json")!
+        
+        var urlComponents = URLComponents.init(string: "https://nominatim.openstreetmap.org/search")!
+        var queryParams = [URLQueryItem]()
+        queryParams.append(.init(name: "q", value: location))
+        queryParams.append(.init(name: "format", value: "json"))
+        
+        urlComponents.queryItems = queryParams
+        
+        guard let url = urlComponents.url else { return }
         
         URLSession.shared.dataTaskPublisher(for: url)
             .sink(receiveCompletion: { completion in
@@ -93,15 +101,14 @@ class ContentVM: ObservableObject {
     func fetchHandler(location: Location, annotation: MKPointAnnotation?) {
         if let lat = Double(location.lat), let lon = Double(location.lon) {
             self.setAnnotation(annotation, with: .init(latitude: lat, longitude: lon))
+            self.checkDistance()
         }
     }
     
     
     // MARK: - Helper Methods
     private func setAnnotation(_ annotation: MKPointAnnotation?, with coordinate: CLLocationCoordinate2D) {
-        DispatchQueue.main.async {
-            annotation?.coordinate = coordinate
-        }
+        annotation?.coordinate = coordinate
     }
     
 }
