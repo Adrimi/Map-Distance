@@ -18,13 +18,18 @@ class ContentVM: ObservableObject {
     @Published var fromCoordinate: MKPointAnnotation?
     @Published var toCoordinate: MKPointAnnotation?
     
+    @Published var distance: Double?
+    
     func serachForLocations() {
+        var coords = [CLLocationCoordinate2D]()
+        
         if let coord1 = parseStringToCoords(string: from) {
             fromCoordinate = {
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = coord1
                 return annotation
             }()
+            coords.append(coord1)
         } else {
             fromCoordinate = .none
         }
@@ -35,8 +40,15 @@ class ContentVM: ObservableObject {
                 annotation.coordinate = coord2
                 return annotation
             }()
+            coords.append(coord2)
         } else {
             toCoordinate = .none
+        }
+        
+        if coords.count == 2 {
+            let points = coords.map { MKMapPoint($0) }
+            let distance = points[0].distance(to: points[1])
+            self.distance = distance
         }
         
     }
