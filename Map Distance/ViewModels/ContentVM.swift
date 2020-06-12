@@ -11,9 +11,10 @@ import MapKit
 class ContentVM: ObservableObject {
     
     let textFieldsPlaceholder = "Coord/Name"
+    private var subscriptions = Set<AnyCancellable>()
     
-    @Published var from: String = "51 21"
-    @Published var to: String = "52 21"
+    @Published var from: String = ""
+    @Published var to: String = ""
     
     @Published var fromAnnotation: MKPointAnnotation?
     @Published var toAnnotation: MKPointAnnotation?
@@ -25,15 +26,23 @@ class ContentVM: ObservableObject {
     
     func serachForLocations() {
         if let coord1 = parseStringToCoords(string: from) {
-            setAnnotation(&fromAnnotation, with: coord1)
+            fromAnnotation = .init()
+            setAnnotation(fromAnnotation, with: coord1)
         } else {
-            fromAnnotation = .none
+            fetch(location: from) { [weak self] location in
+                self?.fromAnnotation = .init()
+                self?.fetchHandler(location: location, annotation: self?.fromAnnotation)
+            }
         }
         
         if let coord2 = parseStringToCoords(string: to) {
-            setAnnotation(&toAnnotation, with: coord2)
+            toAnnotation = .init()
+            setAnnotation(toAnnotation, with: coord2)
         } else {
-            toAnnotation = .none
+            fetch(location: to) { [weak self] location in
+                self?.toAnnotation = .init()
+                self?.fetchHandler(location: location, annotation: self?.toAnnotation)
+            }
         }
     }
     
@@ -60,10 +69,39 @@ class ContentVM: ObservableObject {
         mapUpdate = true
     }
     
+    
+    
+    // MARK: - Networking
+    func fetch(location: String, handler: @escaping (Location) -> Void) {
+        let url = URL(string: "https://nominatim.openstreetmap.org/search?q=\(location)&format=json")!
+        
+        URLSession.shared.dataTaskPublisher(for: url)
+            .sink(receiveCompletion: { completion in
+                switch completion {
+                case .finished:
+                    break
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }) { (locations: [Location]) in
+                if let first = locations.first {
+                    handler(first)
+                }}
+        .store(in: &subscriptions)
+    }
+    
+    func fetchHandler(location: Location, annotation: MKPointAnnotation?) {
+        if let lat = Double(location.lat), let lon = Double(location.lon) {
+            self.setAnnotation(annotation, with: .init(latitude: lat, longitude: lon))
+        }
+    }
+    
+    
     // MARK: - Helper Methods
-    private func setAnnotation(_ annotation: inout MKPointAnnotation?, with coordinate: CLLocationCoordinate2D) {
-        annotation = MKPointAnnotation()
-        annotation?.coordinate = coordinate
+    private func setAnnotation(_ annotation: MKPointAnnotation?, with coordinate: CLLocationCoordinate2D) {
+        DispatchQueue.main.async {
+            annotation?.coordinate = coordinate
+        }
     }
     
 }
