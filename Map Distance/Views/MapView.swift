@@ -48,6 +48,9 @@ struct MapView: UIViewRepresentable {
         if annotations.map(\.coordinate) != view.annotations.map(\.coordinate) {
             view.removeAnnotations(view.annotations)
             view.showAnnotations(annotations, animated: true)
+            let geodesic = MKGeodesicPolyline(coordinates: annotations.map(\.coordinate), count: annotations.count)
+            view.removeOverlays(view.overlays)
+            view.addOverlay(geodesic)
         }
     }
     
@@ -60,6 +63,16 @@ struct MapView: UIViewRepresentable {
         
         init(_ parent: MapView) {
             self.parent = parent
+        }
+        
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            if let polyline = overlay as? MKPolyline {
+                let polylineRenderer = MKPolylineRenderer(overlay: polyline)
+                polylineRenderer.strokeColor = .purple
+                polylineRenderer.lineWidth = 3
+                return polylineRenderer
+            }
+            return MKOverlayRenderer(overlay: overlay)
         }
         
     }
