@@ -10,28 +10,45 @@ import SwiftUI
 
 struct ContentView: View {
     
-    @State private var from: String = ""
-    @State private var to: String = ""
+    @ObservedObject var viewModel = ContentVM()
     internal let inspection = Inspection<Self>()
     
     var body: some View {
         VStack(spacing: 32) {
             
-            // TODO: change to MapView
-            RoundedRectangle(cornerRadius: 20)
-                .fill(Color.offWhite)
-                .background(NeumorphBackgroundView())
-            
+            ZStack(alignment: .bottom) {
+                MapView(fromCoordinate: $viewModel.fromAnnotation, toCoordinate: $viewModel.toAnnotation, toggleUpdate: $viewModel.mapUpdate)
+                    .cornerRadius(20)
+                    .background(NeumorphBackgroundView())
+
+                if viewModel.isShowingDistanceInfo {
+                    DistanceInfoView(distance: viewModel.distance)
+                        .padding(.all, 8)
+                        .transition(.scale)
+                }
+            }
+            .layoutPriority(1)
             
             HStack(spacing: 32) {
-                BasicTextfield(label: BasicTextfieldLabel("FROM"), text: $from)
-                BasicTextfield(label: BasicTextfieldLabel("TO"), text: $to)
+                BasicTextField(label: BasicTextfieldLabel("FROM"), placeholder: viewModel.textFieldsPlaceholder, text: $viewModel.from)
+                BasicTextField(label: BasicTextfieldLabel("TO"), placeholder: viewModel.textFieldsPlaceholder, text: $viewModel.to)
+            }
+
+            Button(action: {
+                self.viewModel.serachForLocations()
+                withAnimation {
+                    self.viewModel.checkDistance()
+                }
+            }) {
+                Text("Search")
             }
         }
         .padding(.all, 24)
         .background(Color.offWhite.edgesIgnoringSafeArea(.all))
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
+        .modifier(KeyboardObserving(updateUI: viewModel.updateMap))
     }
+
 }
 
 #if DEBUG
