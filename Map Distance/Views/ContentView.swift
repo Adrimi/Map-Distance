@@ -8,7 +8,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView: View, Tappable {
     
     @ObservedObject var viewModel = ContentVM()
     internal let inspection = Inspection<Self>()
@@ -44,6 +44,7 @@ struct ContentView: View {
             }
         }
         .padding(.all, 24)
+        .gesture(tap)
         .background(Color.offWhite.edgesIgnoringSafeArea(.all))
         .onReceive(inspection.notice) { self.inspection.visit(self, $0) }
         .modifier(KeyboardObserving(updateUI: viewModel.updateMap))
