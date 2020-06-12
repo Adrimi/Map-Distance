@@ -95,7 +95,7 @@ class Map_DistanceTests: XCTestCase {
     }
     
     func test_mapView_shouldHaveOneAnnotation_afterSettingFromCoordinate() throws {
-        sut.viewModel.fromCoordinate = .fake1
+        sut.viewModel.fromAnnotation = .fake1
         
         try getMapView { mapView in
             let annotations = try mapView.uiView().annotations
@@ -104,7 +104,7 @@ class Map_DistanceTests: XCTestCase {
     }
     
     func test_mapView_shouldHaveOneAnnotation_afterSettingToCoordinate() throws {
-        sut.viewModel.toCoordinate = .fake2
+        sut.viewModel.toAnnotation = .fake2
         
         try getMapView { mapView in
             let annotations = try mapView.uiView().annotations
@@ -113,8 +113,8 @@ class Map_DistanceTests: XCTestCase {
     }
     
     func test_mapView_shouldHaveTwoAnnotations_afterSettingBoth() throws {
-        sut.viewModel.fromCoordinate = .fake1
-        sut.viewModel.toCoordinate = .fake2
+        sut.viewModel.fromAnnotation = .fake1
+        sut.viewModel.toAnnotation = .fake2
         
         try getMapView { mapView in
             let annotations = try mapView.uiView().annotations
