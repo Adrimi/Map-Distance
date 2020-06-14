@@ -51,6 +51,24 @@ struct MapView: UIViewRepresentable {
             let geodesic = MKGeodesicPolyline(coordinates: annotations.map(\.coordinate), count: annotations.count)
             view.removeOverlays(view.overlays)
             view.addOverlay(geodesic)
+            
+            let request: MKDirections.Request = .init()
+            request.source = MKMapItem.init(placemark: MKPlacemark.init(coordinate: annotations.map(\.coordinate).first!))
+            request.destination = MKMapItem.init(placemark: MKPlacemark.init(coordinate: annotations.map(\.coordinate).last!))
+            request.transportType = .automobile
+            request.requestsAlternateRoutes = false
+            
+            MKDirections.init(request: request).calculate { (response, error) in
+                if let route = response?.routes.first {
+                    let polyline = route.polyline
+                    DispatchQueue.main.async {
+                        view.addOverlay(polyline)
+                    }
+                    
+                }
+            }
+            
+            
         }
     }
     
@@ -68,7 +86,7 @@ struct MapView: UIViewRepresentable {
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             if let polyline = overlay as? MKPolyline {
                 let polylineRenderer = MKPolylineRenderer(overlay: polyline)
-                polylineRenderer.strokeColor = .purple
+                polylineRenderer.strokeColor = UIColor.init(red: .random(in: 0...1), green: .random(in: 0...1), blue: .random(in: 0...1), alpha: 1)
                 polylineRenderer.lineWidth = 3
                 return polylineRenderer
             }
