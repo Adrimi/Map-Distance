@@ -50,25 +50,7 @@ struct MapView: UIViewRepresentable {
             view.showAnnotations(annotations, animated: true)
             let geodesic = MKGeodesicPolyline(coordinates: annotations.map(\.coordinate), count: annotations.count)
             view.removeOverlays(view.overlays)
-            view.addOverlay(geodesic)
-            
-            let request: MKDirections.Request = .init()
-            request.source = MKMapItem.init(placemark: MKPlacemark.init(coordinate: annotations.map(\.coordinate).first!))
-            request.destination = MKMapItem.init(placemark: MKPlacemark.init(coordinate: annotations.map(\.coordinate).last!))
-            request.transportType = .automobile
-            request.requestsAlternateRoutes = false
-            
-            MKDirections.init(request: request).calculate { (response, error) in
-                if let route = response?.routes.first {
-                    let polyline = route.polyline
-                    DispatchQueue.main.async {
-                        view.addOverlay(polyline)
-                    }
-                    
-                }
-            }
-            
-            
+            view.addOverlay(geodesic)        
         }
     }
     

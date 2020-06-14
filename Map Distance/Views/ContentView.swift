@@ -22,9 +22,14 @@ struct ContentView: View, Tappable {
                     .background(NeumorphBackgroundView())
 
                 if viewModel.isShowingDistanceInfo {
-                    DistanceInfoView(distance: viewModel.distance)
-                        .padding(.all, 8)
-                        .transition(.scale)
+                    VStack {
+                        Spacer()
+                            .layoutPriority(2)
+                        
+                        DistanceInfoView(straightDistance: viewModel.straightDistance, navigationDistance: $viewModel.navigationDistance)
+                            .padding(.all, 8)
+                            .transition(.scale)
+                    }
                 }
             }
             .layoutPriority(1)
