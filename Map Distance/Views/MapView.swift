@@ -15,6 +15,7 @@ struct MapView: UIViewRepresentable {
     // MARK: - Paramters
     @Binding var fromCoordinate: MKPointAnnotation?
     @Binding var toCoordinate: MKPointAnnotation?
+    @Binding var navigationRoute: MKPolyline?
     @Binding var toggleUpdate: Bool
     
     private var coordsAsAnnotations: [MKPointAnnotation] {
@@ -39,18 +40,22 @@ struct MapView: UIViewRepresentable {
     
     func updateUIView(_ view: MKMapView, context: Context) {
         if toggleUpdate {
-            view.removeAnnotations(view.annotations)
-            view.showAnnotations(view.annotations, animated: true)
-            toggleUpdate = false
-        }
-        
-        let annotations = coordsAsAnnotations
-        if annotations.map(\.coordinate) != view.annotations.map(\.coordinate) {
+            let annotations = coordsAsAnnotations
+            
             view.removeAnnotations(view.annotations)
             view.showAnnotations(annotations, animated: true)
-            let geodesic = MKGeodesicPolyline(coordinates: annotations.map(\.coordinate), count: annotations.count)
-            view.removeOverlays(view.overlays)
-            view.addOverlay(geodesic)        
+            
+            if annotations.count == 2 {
+                let geodesic = MKGeodesicPolyline(coordinates: annotations.map(\.coordinate), count: annotations.count)
+                view.removeOverlays(view.overlays)
+                view.addOverlay(geodesic)
+                
+                if let navRoute = navigationRoute {
+                    view.addOverlay(navRoute)
+                }
+            }
+            
+            toggleUpdate = false
         }
     }
     
@@ -73,6 +78,17 @@ struct MapView: UIViewRepresentable {
                 return polylineRenderer
             }
             return MKOverlayRenderer(overlay: overlay)
+        }
+        
+        func mapView(_ mapView: MKMapView, didAdd renderers: [MKOverlayRenderer]) {
+            for renderer in renderers where renderer.isKind(of: MKPolylineRenderer.self)  {
+                renderer.alpha = 0
+                DispatchQueue.main.async {
+                UIView.animate(withDuration: 0.5) {
+                    renderer.alpha = 1
+                }
+                }
+            }
         }
         
     }

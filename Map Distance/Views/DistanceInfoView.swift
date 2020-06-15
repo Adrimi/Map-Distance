@@ -15,16 +15,16 @@ struct DistanceInfoView: View {
     var body: some View {
         ZStack {
             NeumorphBackgroundView()
-            VStack {
+            
+            VStack(spacing: 8) {
                 Text("Straight is \(straightDistance.kilometers) km · \(straightDistance.meters) m")
                 if navigationDistance > 0 {
                     Text("Navigation is \(navigationDistance.kilometers) km · \(navigationDistance.meters) m")
                 }
             }
-            .padding(.horizontal, 8)
+            .padding(.vertical, 8)
         }
         .opacity(0.7)
-//        .frame(height: 50)
     }
 }
 

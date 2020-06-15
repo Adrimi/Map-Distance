@@ -21,11 +21,19 @@ class ContentVM: ObservableObject {
     
     var straightDistance: Double = 0
     @Published var navigationDistance: Double = 0
+    @Published var navigationRoute: MKPolyline?
     @Published var isShowingDistanceInfo: Bool = false
     
     @Published var mapUpdate: Bool = false
     
     func serachForLocations() {
+        fromAnnotation = nil
+        toAnnotation = nil
+        isShowingDistanceInfo = false
+        straightDistance = 0
+        navigationDistance = 0
+        navigationRoute = nil
+        
         if let coord1 = parseStringToCoords(string: from) {
             fromAnnotation = .init()
             setAnnotation(fromAnnotation, with: coord1)
@@ -70,7 +78,6 @@ class ContentVM: ObservableObject {
     func updateMap() {
         mapUpdate = true
     }
-    
     
     
     // MARK: - Networking
@@ -118,6 +125,8 @@ class ContentVM: ObservableObject {
         MKDirections.init(request: request).calculate { [weak self] (response, error) in
             if let route = response?.routes.first {
                 self?.navigationDistance = route.distance
+                self?.navigationRoute = route.polyline
+                self?.updateMap()
             }
         }
     }

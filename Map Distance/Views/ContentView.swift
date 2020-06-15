@@ -17,7 +17,10 @@ struct ContentView: View, Tappable {
         VStack(spacing: 32) {
             
             ZStack(alignment: .bottom) {
-                MapView(fromCoordinate: $viewModel.fromAnnotation, toCoordinate: $viewModel.toAnnotation, toggleUpdate: $viewModel.mapUpdate)
+                MapView(fromCoordinate: $viewModel.fromAnnotation,
+                        toCoordinate: $viewModel.toAnnotation,
+                        navigationRoute: $viewModel.navigationRoute,
+                        toggleUpdate: $viewModel.mapUpdate)
                     .cornerRadius(20)
                     .background(NeumorphBackgroundView())
 
@@ -28,7 +31,6 @@ struct ContentView: View, Tappable {
                         
                         DistanceInfoView(straightDistance: viewModel.straightDistance, navigationDistance: $viewModel.navigationDistance)
                             .padding(.all, 8)
-                            .transition(.scale)
                     }
                 }
             }
