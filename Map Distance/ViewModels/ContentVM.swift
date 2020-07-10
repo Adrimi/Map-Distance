@@ -25,6 +25,7 @@ class ContentVM: ObservableObject {
     @Published var mapUpdate: Bool = false
     
     func serachForLocations() {
+        fatalError()
         if let coord1 = parseStringToCoords(string: from) {
             fromAnnotation = .init()
             setAnnotation(fromAnnotation, with: coord1)
