@@ -19,12 +19,21 @@ class ContentVM: ObservableObject {
     @Published var fromAnnotation: MKPointAnnotation?
     @Published var toAnnotation: MKPointAnnotation?
     
-    var distance: Double = 0
+    var straightDistance: Double = 0
+    @Published var navigationDistance: Double = 0
+    @Published var navigationRoute: MKPolyline?
     @Published var isShowingDistanceInfo: Bool = false
     
     @Published var mapUpdate: Bool = false
     
     func serachForLocations() {
+        fromAnnotation = nil
+        toAnnotation = nil
+        isShowingDistanceInfo = false
+        straightDistance = 0
+        navigationDistance = 0
+        navigationRoute = nil
+        
         if let coord1 = parseStringToCoords(string: from) {
             fromAnnotation = .init()
             setAnnotation(fromAnnotation, with: coord1)
@@ -50,8 +59,9 @@ class ContentVM: ObservableObject {
         if let coord1 = fromAnnotation?.coordinate,
             let coord2 = toAnnotation?.coordinate {
             let distance = MKMapPoint(coord1).distance(to: MKMapPoint(coord2))
-            self.distance = distance
+            self.straightDistance = distance
             isShowingDistanceInfo = true
+            findNavigationRoute(from: coord1, to: coord2)
         } else {
             isShowingDistanceInfo = false
         }
@@ -68,7 +78,6 @@ class ContentVM: ObservableObject {
     func updateMap() {
         mapUpdate = true
     }
-    
     
     
     // MARK: - Networking
@@ -103,6 +112,22 @@ class ContentVM: ObservableObject {
         if let lat = Double(location.lat), let lon = Double(location.lon) {
             self.setAnnotation(annotation, with: .init(latitude: lat, longitude: lon))
             self.checkDistance()
+        }
+    }
+    
+    func findNavigationRoute(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) {
+        let request: MKDirections.Request = .init()
+        request.source = MKMapItem.init(placemark: MKPlacemark.init(coordinate: from))
+        request.destination = MKMapItem.init(placemark: MKPlacemark.init(coordinate: to))
+        request.transportType = .automobile
+        request.requestsAlternateRoutes = false
+        
+        MKDirections.init(request: request).calculate { [weak self] (response, error) in
+            if let route = response?.routes.first {
+                self?.navigationDistance = route.distance
+                self?.navigationRoute = route.polyline
+                self?.updateMap()
+            }
         }
     }
     

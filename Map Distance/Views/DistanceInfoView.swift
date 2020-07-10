@@ -9,34 +9,39 @@ import SwiftUI
 
 struct DistanceInfoView: View {
     
-    var distance: Double
-    
-    private var kilometers: Int {
-        meters / 1000
-    }
-    
-    private var meters: Int {
-        Int(round(distance))
-    }
-    
-    init(distance: Double) {
-        self.distance = distance
-    }
+    var straightDistance: Double
+    @Binding var navigationDistance: Double
     
     var body: some View {
         ZStack {
             NeumorphBackgroundView()
-            Text("Distance is \(kilometers) km · \(meters) m")
+            
+            VStack(spacing: 8) {
+                Text("Straight is \(straightDistance.kilometers) km · \(straightDistance.meters) m")
+                if navigationDistance > 0 {
+                    Text("Navigation is \(navigationDistance.kilometers) km · \(navigationDistance.meters) m")
+                }
+            }
+            .padding(.vertical, 8)
         }
         .opacity(0.7)
-        .frame(height: 50)
+    }
+}
+
+extension Double {
+    var kilometers: Int {
+        meters / 1000
+    }
+    
+    var meters: Int {
+        Int(self)
     }
 }
 
 #if DEBUG
 struct DistanceInfoView_Previews: PreviewProvider {
     static var previews: some View {
-        DistanceInfoView(distance: 2137)
+        DistanceInfoView(straightDistance: 2137, navigationDistance: .mock(4000))
     }
 }
 #endif

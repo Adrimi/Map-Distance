@@ -17,14 +17,21 @@ struct ContentView: View, Tappable {
         VStack(spacing: 32) {
             
             ZStack(alignment: .bottom) {
-                MapView(fromCoordinate: $viewModel.fromAnnotation, toCoordinate: $viewModel.toAnnotation, toggleUpdate: $viewModel.mapUpdate)
+                MapView(fromCoordinate: $viewModel.fromAnnotation,
+                        toCoordinate: $viewModel.toAnnotation,
+                        navigationRoute: $viewModel.navigationRoute,
+                        toggleUpdate: $viewModel.mapUpdate)
                     .cornerRadius(20)
                     .background(NeumorphBackgroundView())
 
                 if viewModel.isShowingDistanceInfo {
-                    DistanceInfoView(distance: viewModel.distance)
-                        .padding(.all, 8)
-                        .transition(.scale)
+                    VStack {
+                        Spacer()
+                            .layoutPriority(2)
+                        
+                        DistanceInfoView(straightDistance: viewModel.straightDistance, navigationDistance: $viewModel.navigationDistance)
+                            .padding(.all, 8)
+                    }
                 }
             }
             .layoutPriority(1)

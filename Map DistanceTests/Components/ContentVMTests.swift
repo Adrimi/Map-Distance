@@ -36,7 +36,7 @@ class ContentVMTests: XCTestCase {
     }
     
     func test_initialDistanceShouldBe0() {
-        XCTAssertEqual(viewModel.distance, 0)
+        XCTAssertEqual(viewModel.straightDistance, 0)
     }
     
     func test_afterSettingAnnotations_shouldChangedistance() {
@@ -48,7 +48,7 @@ class ContentVMTests: XCTestCase {
         
         viewModel.checkDistance()
         
-        XCTAssertGreaterThan(viewModel.distance, 0)
+        XCTAssertGreaterThan(viewModel.straightDistance, 0)
     }
     
     func test_updateMap_shouldChangeParamToTrue() {
