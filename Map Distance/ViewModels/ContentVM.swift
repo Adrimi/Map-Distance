@@ -83,29 +83,20 @@ class ContentVM: ObservableObject {
     // MARK: - Networking
     func fetch(location: String, handler: @escaping (Location) -> Void) {
         
-        var urlComponents = URLComponents.init(string: "https://nominatim.openstreetmap.org/search")!
-        var queryParams = [URLQueryItem]()
-        queryParams.append(.init(name: "q", value: location))
-        queryParams.append(.init(name: "format", value: "json"))
-        
-        urlComponents.queryItems = queryParams
-        
-        guard let url = urlComponents.url else { return }
+        let url = Endpoint.search(for: location).url
         
         URLSession.shared.dataTaskPublisher(for: url)
             .receive(on: RunLoop.main)
-            .sink(receiveCompletion: { completion in
-                switch completion {
-                case .finished:
-                    break
-                case .failure(let error):
-                    print(error.localizedDescription)
-                }
-            }) { (locations: [Location]) in
-                if let first = locations.first {
-                    handler(first)
-                }}
-        .store(in: &subscriptions)
+            .tryMap { (data, response) in
+                try JSONDecoder().decode([Location].self, from: data)
+            }
+            .replaceError(with: [])
+            .sink { locations in
+                    if let firstLocation = locations.first {
+                        handler(firstLocation)
+                    }
+                  }
+            .store(in: &subscriptions)
     }
     
     func fetchHandler(location: Location, annotation: MKPointAnnotation?) {
@@ -137,4 +128,41 @@ class ContentVM: ObservableObject {
         annotation?.coordinate = coordinate
     }
     
+}
+
+struct Endpoint {
+    var path: String
+    var queryItems: [URLQueryItem] = []
+}
+
+extension Endpoint {
+    var url: URL {
+        var components = URLComponents()
+        components.scheme = "https"
+        components.host = "nominatim.openstreetmap.org"
+        components.path = "/" + path
+        components.queryItems = queryItems
+        
+        guard let url = components.url else {
+            preconditionFailure("Invalid URL components: \(components)")
+        }
+        
+        return url
+    }
+}
+
+extension Endpoint {
+    static func search(for query: String, format: String = "json") -> Self {
+        Endpoint(
+            path: "search",
+            queryItems: [
+                URLQueryItem(
+                    name: "q",
+                    value: query),
+                URLQueryItem(
+                    name: "format",
+                    value: format)
+            ]
+        )
+    }
 }
