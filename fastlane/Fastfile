@@ -6,7 +6,7 @@ end
 platform :ios do
   desc "Sync signing"
   lane :signing do
-    
+    sync_code_signing  #match
   end
 
   desc "Build binary"
